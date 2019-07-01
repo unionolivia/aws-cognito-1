@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="description" content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google. ">
+        <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template,">
+        <title>Register</title>
+
+        <!-- Favicons-->
+        <link rel="icon" href="public/images/favicon/favicon-32x32.png" sizes="32x32">
+        <!-- Favicons-->
+        <link rel="apple-touch-icon-precomposed" href="public/images/favicon/apple-touch-icon-152x152.png">
+        <!-- For iPhone -->
+        <meta name="msapplication-TileColor" content="#00bcd4">
+        <meta name="msapplication-TileImage" content="public/images/favicon/mstile-144x144.png">
+        <!-- For Windows Phone -->
+
+
+        <!-- CORE CSS-->    
+        <link href="public/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+        <link href="public/css/style.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+        <!-- Custome CSS-->    
+        <link href="public/css/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
+
+
+        <!-- jQuery Library -->
+        <script type="text/javascript" src="public/js/jquery-1.11.2.min.js"></script>    
+        <!--materialize js-->
+        <script type="text/javascript" src="public/js/materialize.min.js"></script>
+        <!--scrollbar-->
+        <script type="text/javascript" src="public/js/perfect-scrollbar.min.js"></script>
+
+        <!--plugins.js - Some Specific JS codes for Plugin Settings-->
+        <script type="text/javascript" src="public/js/plugins.min.js"></script>
+
+        <script type="text/javascript" src="public/js/prism.js"></script>
+        <script type="text/javascript" src="public/js/sweetalert.min.js"></script>
+        <link type="text/css" rel="stylesheet" href="public/css/page-center.css" media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="public/css/prism.css" media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="public/css/sweetalert.css" media="screen,projection"/>
+    </head>
+
+    <body class="blue lighten-3">  
+
+        <div id="login-page" class="row">
+            <div class="col s12 z-depth-4 card-panel">
+                <span class="loading"></span>
+                <form class="login-form">
+                    <div class="row">
+                        <div class="input-field col s12 center">
+                            <!--<img src="public/image/logo.png" alt="" class="circle responsive-img valign profile-image-login">-->
+                            <!--<h1 class="center login-form-text header">e-Dentist</h1>-->
+                            <h4>e-Dentist</h4>
+                        </div>
+                    </div>
+                    <div class="row margin">
+                        <div class="input-field col s12">
+                            <i class="mdi-communication-email prefix"></i>
+                            <input id="email" type="email" value="admin@admin.com">
+                            <label for="email" class="center-align">Email</label>
+                        </div>
+                    </div>
+                    <div class="row margin">
+                        <div class="input-field col s12">
+                            <i class="mdi-action-lock-outline prefix"></i>
+                            <input id="password" type="password" value="admin">
+                            <label for="password">Password</label>
+                        </div>
+                    </div>
+                    <div class="row">          
+                        <div class="input-field col s12 m12 l12  login-text">
+                            <input type="checkbox" id="remember-me" />
+                            <label for="remember-me">Remember me</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <button class="signup indigo lighten-1 btn waves-effect waves-light" type="submit">Signup</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6 m6 l6">
+                            <p class="margin medium-small"><a href="index.html">Login!</a></p>
+                        </div>
+                        <div class="input-field col s6 m6 l6">
+                            <!--<p class="margin right-align medium-small"><a href="#">Forgot password ?</a></p>-->
+                        </div>          
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+        <script>
+            $(function () {
+                $('.signup').on('click', function (e) {
+                    e.preventDefault();
+                    // Let us get the email and password
+                    var email = $('#email').val();
+                    var password = $('#password').val();
+
+                    if (email === '') {
+                        $('#email').focus();
+                        return false;
+                    }
+
+                    if (password === '') {
+                        $('#password').focus();
+                        return false;
+                    }
+
+                    var req = $.ajax({
+                        type: 'POST',
+                        url: 'signup.php',
+                        data: {email: email, password: password},
+                        dataType: 'json'
+                    });
+                    req.done(function (resp, textStatus, jqXHR) {
+                        var data = resp;
+                        console.log(data);
+                        if (data.result == null) {
+                            alert('A code has been sent to your mail.');
+                            let email = localStorage.setItem("name", data.username);
+                            window.location.href = 'confirm.html';
+                        }
+                        return false;
+
+                    });
+
+                    // On Fail
+                    req.fail(function (error, textStatus, errorThrown) {
+                        console.log(error);
+                        return false;
+                    });
+
+                    return false;
+
+                });
+            });
+        </script>
+    </body>
+</html>

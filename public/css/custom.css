@@ -1,0 +1,41 @@
+/* 
+    Created on : Feb 17, 2018, 12:33:24 AM
+    Author     : union
+*/
+
+/* Search Result    */
+.searchres
+{
+    margin-left:0px;
+    width:805px;
+    /*    border: #f0f0f0 1px solid; 
+     
+        position: fixed; 
+        z-index:1; 
+    */
+    border-radius: 0.2em;
+    color: #000;
+    background:#fff;
+}
+
+
+.search_visit:visited 
+{
+    color: #000;
+    text-decoration:none;
+}
+.search_visit:hover 
+{
+    color: rosybrown;
+    text-decoration:royalblue solid;
+}
+.search_visit:active 
+{
+  
+    text-decoration:none;
+}
+
+.search_visit:link{
+    color: #000;
+    text-decoration: none;
+}

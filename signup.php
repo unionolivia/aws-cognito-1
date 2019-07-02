@@ -1,6 +1,6 @@
 <?php
 
-// header('Content-Type: application/json');
+ header('Content-Type: application/json');
 
 /** @var \pmill\AwsCognito\CognitoClient $client */
 $client = require('bootstrap.php');
@@ -29,6 +29,13 @@ try {
         'custom:display_name' => $firstname.''.$lastname, 
     ]);
 
+    if($user){
+        $groupName = 'buyer';
+
+        $client->addUserToGroup($username, $groupName);
+
+    }
+
 //    $user = $client->getUser($username);
 //    $user = $client->getUser($username);
     $result = $user['UserConfirmed'];
@@ -37,8 +44,6 @@ try {
 //    var_dump($user['UserSub']);
 //    var_dump($user['UserConfirmed']);
 
-print_r($user);
-die();
 
     echo json_encode(array(
         'result' => $result,

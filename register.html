@@ -120,7 +120,7 @@
                 $('.signup').on('click', function (e) {
                     e.preventDefault();
 		    
-		    // let url = 'http://34.254.244.187/aws-cognito-1/';
+		    let url = 'http://34.254.244.187/aws-cognito-1/';
                     // Let us get the email and password
                     var username = $('#username').val();
                     var firstname = $('#firstname').val();
@@ -140,7 +140,7 @@
 
                     var req = $.ajax({
                         type: 'POST',
-                        url: './signup.php',
+                        url: url+'signup.php',
                         data: {username: username, firstname: firstname, lastname: lastname, email: email, password: password},
                         dataType: 'json'
                     });

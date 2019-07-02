@@ -1,5 +1,7 @@
 <?php
 
+//Access-Control-Allow-Origin header with wildcard.
+ header('Access-Control-Allow-Origin: *');
  header('Content-Type: application/json');
 
 /** @var \pmill\AwsCognito\CognitoClient $client */
@@ -30,7 +32,7 @@ try {
     ]);
 
     if($user){
-        $groupName = 'buyer';
+        $groupName = 'Buyers';
 
         $client->addUserToGroup($username, $groupName);
 

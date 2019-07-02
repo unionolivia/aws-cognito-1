@@ -59,14 +59,35 @@
                     <div class="row margin">
                         <div class="input-field col s12">
                             <i class="mdi-communication-email prefix"></i>
-                            <input id="email" type="email" value="admin@admin.com">
+                            <input id="username" type="text" value="">
+                            <label for="username" class="center-align">Username</label>
+                        </div>
+                    </div>
+                    <div class="row margin">
+                        <div class="input-field col s12">
+                            <i class="mdi-communication-email prefix"></i>
+                            <input id="lastname" type="text" value="">
+                            <label for="lastname" class="center-align">Family name</label>
+                        </div>
+                    </div>
+                    <div class="row margin">
+                        <div class="input-field col s12">
+                            <i class="mdi-communication-email prefix"></i>
+                            <input id="firstname" type="text" value="">
+                            <label for="firstname" class="center-align">Given name </label>
+                        </div>
+                    </div>
+                    <div class="row margin">
+                        <div class="input-field col s12">
+                            <i class="mdi-communication-email prefix"></i>
+                            <input id="email" type="email" value="">
                             <label for="email" class="center-align">Email</label>
                         </div>
                     </div>
                     <div class="row margin">
                         <div class="input-field col s12">
                             <i class="mdi-action-lock-outline prefix"></i>
-                            <input id="password" type="password" value="admin">
+                            <input id="password" type="password" value="">
                             <label for="password">Password</label>
                         </div>
                     </div>
@@ -98,7 +119,12 @@
             $(function () {
                 $('.signup').on('click', function (e) {
                     e.preventDefault();
+		    
+		    // let url = 'http://34.254.244.187/aws-cognito-1/';
                     // Let us get the email and password
+                    var username = $('#username').val();
+                    var firstname = $('#firstname').val();
+                    var lastname = $('#lastname').val();
                     var email = $('#email').val();
                     var password = $('#password').val();
 
@@ -114,8 +140,8 @@
 
                     var req = $.ajax({
                         type: 'POST',
-                        url: 'signup.php',
-                        data: {email: email, password: password},
+                        url: './signup.php',
+                        data: {username: username, firstname: firstname, lastname: lastname, email: email, password: password},
                         dataType: 'json'
                     });
                     req.done(function (resp, textStatus, jqXHR) {

@@ -97,6 +97,7 @@
             $(function () {
                 $('.login').on('click', function (e) {
                     e.preventDefault();
+			let url = 'http://34.254.244.187/aws-cognito-1/';
                     // Let us get the email and password
                     var email = $('#email').val();
                     var password = $('#password').val();
@@ -114,7 +115,8 @@
 
                     var req = $.ajax({
                         type: 'POST',
-                        url: 'login.php',
+                        /*url: url+'login.php',*/
+			url: 'login.php',
                         data: {email: email, password: password},
                         dataType: 'json'
                     });

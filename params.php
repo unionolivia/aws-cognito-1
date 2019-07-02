@@ -2,13 +2,13 @@
 
 return [
     'credentials' => [
-        'key' => 'AKIATCY7DLVGJDAJPJPF',
-        'secret' => '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',
+        'key' => 'AKIAYWDR7YDCROJTXCNF',
+        'secret' => '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',
     ],
-    'region' => 'us-east-2',
+    'region' => 'eu-west-1',
     'version' => 'latest',
 
-    'app_client_id' => '65c317ku7fue4kqg0po6dct95k',
+    'app_client_id' => '6pk1hd4q18qa96cu1nj521p64m',
     'app_client_secret' => '',
-    'user_pool_id' => 'us-east-2_PSOv57dgW',
+    'user_pool_id' => 'eu-west-1_4MtWNKOIc',
 ];

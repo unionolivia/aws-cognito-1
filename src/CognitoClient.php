@@ -75,7 +75,7 @@ class CognitoClient
                 'AuthParameters' => [
                     'USERNAME' => $username,
                     'PASSWORD' => $password,
-                    'SECRET_HASH' => $this->cognitoSecretHash($username),
+                    // 'SECRET_HASH' => $this->cognitoSecretHash($username),
                 ],
                 'ClientId' => $this->appClientId,
                 'UserPoolId' => $this->userPoolId,
@@ -147,7 +147,7 @@ class CognitoClient
                 'AuthParameters' => [
                     'USERNAME' => $username,
                     'REFRESH_TOKEN' => $refreshToken,
-                    'SECRET_HASH' => $this->cognitoSecretHash($username),
+                    // 'SECRET_HASH' => $this->cognitoSecretHash($username),
                 ],
                 'ClientId' => $this->appClientId,
                 'UserPoolId' => $this->userPoolId,
@@ -326,7 +326,7 @@ class CognitoClient
             $response = $this->client->signUp([
                 'ClientId' => $this->appClientId,
                 'Password' => $password,
-                'SecretHash' => $this->cognitoSecretHash($username),
+                // 'SecretHash' => $this->cognitoSecretHash($username),
                 'UserAttributes' => $userAttributes,
                 'Username' => $username,
             ]);

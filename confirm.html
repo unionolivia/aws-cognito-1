@@ -92,6 +92,8 @@
             $(function () {
                 $('.onverify').on('click', function (e) {
                     e.preventDefault();
+		     
+		   let url = 'http://34.254.244.187/aws-cognito-1/';
                     var email = localStorage.getItem('name');
                     // Let us get the verification code
                     var verifycode = $('#verifycode').val();
@@ -103,7 +105,7 @@
                     
                         var req = $.ajax({
                         type: 'POST',
-                        url: 'confirm.php',
+                        url: url+'confirm.php',
                         data: {email: email, verifycode: verifycode},
                         dataType: 'json'
                     });

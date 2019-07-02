@@ -1,23 +1,32 @@
 <?php
 
-header('Content-Type: application/json');
+// header('Content-Type: application/json');
 
 /** @var \pmill\AwsCognito\CognitoClient $client */
 $client = require('bootstrap.php');
 
+
 $data = [
     'email' => $_POST['email'],
-    'password' => $_POST['password']
+    'password' => $_POST['password'],
+    'username' => $_POST['username'],
+    'firstname' => $_POST['firstname'],
+    'lastname' => $_POST['lastname'],
 ];
 
 
 $email = $data['email'];
 $password = $data['password'];
-$username = $email;
+$username = $data['username'];
+$lastname = $data['lastname'];
+$firstname = $data['firstname'];
 
 try {
     $user = $client->registerUser($username, $password, [
-        'email' => $email
+        'email' => $email,
+        'family_name' => $lastname,
+        'given_name' => $firstname,
+        'custom:display_name' => $firstname.''.$lastname, 
     ]);
 
 //    $user = $client->getUser($username);
@@ -27,6 +36,9 @@ try {
 //    var_dump($user);
 //    var_dump($user['UserSub']);
 //    var_dump($user['UserConfirmed']);
+
+print_r($user);
+die();
 
     echo json_encode(array(
         'result' => $result,

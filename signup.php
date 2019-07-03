@@ -6,10 +6,12 @@
 
 /** @var \pmill\AwsCognito\CognitoClient $client */
 $client = require('bootstrap.php');
-
 //Initiate the MySQL connection
-include_once('config.php'); 
-
+$pdo = require('db.php');
+print_r($client);
+print_r($db);
+print_r(client);
+die();
 
 // Get the data from the client
 $data = [
@@ -20,8 +22,9 @@ $data = [
     'lastname' => $_POST['lastname'],
 ];
 
+
 // Let's apply some logic
-$stmt = $db->prepare("SELECT email FROM users WHERE email = :email");
+$stmt = $pdo->prepare("SELECT email FROM user WHERE email = :email");
 
     $stmt->execute(array(
         ':email' => $username,
@@ -33,8 +36,6 @@ $stmt = $db->prepare("SELECT email FROM users WHERE email = :email");
 
                 // header("Location:../admin/");
     }
-print_r($stmt);
-die();
 
 $email = $data['email'];
 $password = $data['password'];

@@ -1,3 +1,5 @@
 vendor
 .idea
 examples/config.php
+params.php
+db.php

@@ -7,7 +7,11 @@
 /** @var \pmill\AwsCognito\CognitoClient $client */
 $client = require('bootstrap.php');
 
+//Initiate the MySQL connection
+include_once('config.php'); 
 
+
+// Get the data from the client
 $data = [
     'email' => $_POST['email'],
     'password' => $_POST['password'],
@@ -16,6 +20,21 @@ $data = [
     'lastname' => $_POST['lastname'],
 ];
 
+// Let's apply some logic
+$stmt = $db->prepare("SELECT email FROM users WHERE email = :email");
+
+    $stmt->execute(array(
+        ':email' => $username,
+        ));
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!empty($user)) {
+                $email = $user['email'];
+
+                // header("Location:../admin/");
+    }
+print_r($stmt);
+die();
 
 $email = $data['email'];
 $password = $data['password'];

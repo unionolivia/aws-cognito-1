@@ -7,11 +7,7 @@
 /** @var \pmill\AwsCognito\CognitoClient $client */
 $client = require('bootstrap.php');
 //Initiate the MySQL connection
-$pdo = require('db.php');
-print_r($client);
-print_r($db);
-print_r(client);
-die();
+include 'db.php';
 
 // Get the data from the client
 $data = [
@@ -27,7 +23,7 @@ $data = [
 $stmt = $pdo->prepare("SELECT email FROM user WHERE email = :email");
 
     $stmt->execute(array(
-        ':email' => $username,
+        ':email' => $email,
         ));
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
